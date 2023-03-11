@@ -17,15 +17,27 @@ bolsa = {}
 print("para finalizar digitar SAIR")
 
 while True:
-    informacoes = input("caracteristica: ")
+    informacoes = input("informacoes: ")
 
     if informacoes == "sair":
         break
 
     
     caracteristica = input("valor: ")
-
+    
+    if bolsa.get(informacoes, False):
+        if type(bolsa[informacoes]) == list:
+            bolsa[informacoes].append(caracteristica)
+            continue
+        
+        else:
+            grupo = [caracteristica, bolsa[informacoes] ]
+            #grupo.append(caracteristica)
+            #grupo.append(bolsa[informacoes])
+            caracteristica = grupo
+            
     bolsa[informacoes] = caracteristica
+
     
 
 print(bolsa)
